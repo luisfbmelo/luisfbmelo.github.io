@@ -19,7 +19,7 @@
   "dependencies": {
     "browserify": "^10.2.6",
     "browserify-shim": "^3.8.9",
-    "jquery": "^2.1.4"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "grunt": "^1.0.3",
