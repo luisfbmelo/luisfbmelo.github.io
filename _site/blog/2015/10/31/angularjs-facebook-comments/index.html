@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <!--SEO-->
+  <title>AngularJS - Implementing Facebook Comments plugin · Luis Melo</title>
+  <meta name="description" content="I'm here to present to you a problem and solution that I encountered in my latest project, implementing Facebook Comments.">
+  <meta name="keywords" content="Luis, Melo, multimedia, portfolio, web, design, development, photography, HTML, CSS, XML, JavaScript, jekyll, angularjs, blog, personal, nature, landscape, coding, fotografia, fotografo, programação, paisagem, eventos, batizado">
+  <meta name="author" content="Luis Melo">
+
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="AngularJS - Implementing Facebook Comments plugin">
+  <meta itemprop="description" content="I'm here to present to you a problem and solution that I encountered in my latest project, implementing Facebook Comments.">
+  <meta itemprop="image" content="https://luisfbmelo.github.io//images/blog/2015-10-31-angularjs-facebook-comments/angular-facebook-comments.jpg">
+
+  <!-- Twiter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@luisfbmelo"> 
+  <meta name="twitter:title" content="AngularJS - Implementing Facebook Comments plugin">
+  <meta name="twitter:description" content="I'm here to present to you a problem and solution that I encountered in my latest project, implementing Facebook Comments.">
+  <meta name="twitter:image:src" content="https://luisfbmelo.github.io//images/blog/2015-10-31-angularjs-facebook-comments/angular-facebook-comments.jpg">
+  <!--/ Twiter Cards -->
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Luis Melo">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AngularJS - Implementing Facebook Comments plugin" />
+  <meta property="og:url" content="https://luisfbmelo.github.io//blog/2015/10/31/angularjs-facebook-comments/">
+  <meta property="og:description" content="I'm here to present to you a problem and solution that I encountered in my latest project, implementing Facebook Comments.">
+  <meta property="og:image" content="https://luisfbmelo.github.io//images/blog/2015-10-31-angularjs-facebook-comments/angular-facebook-comments.jpg">
+  <!--/ Open Graph -->
+
+  <link rel="canonical" href="https://luisfbmelo.github.io//blog/2015/10/31/angularjs-facebook-comments/">
+  <link rel="alternate" type="application/rss+xml" title="Luis Melo" href="https://luisfbmelo.github.io//feed.xml" />
+
+  <!--FAV ICON-->
+  <link rel="apple-touch-icon" sizes="57x57" href="https://luisfbmelo.github.io//images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://luisfbmelo.github.io//images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://luisfbmelo.github.io//images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://luisfbmelo.github.io//images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://luisfbmelo.github.io//images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://luisfbmelo.github.io//images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://luisfbmelo.github.io//images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://luisfbmelo.github.io//images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://luisfbmelo.github.io//images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://luisfbmelo.github.io//images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://luisfbmelo.github.io//images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://luisfbmelo.github.io//images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://luisfbmelo.github.io//images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://luisfbmelo.github.io//images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="https://luisfbmelo.github.io//images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!--CSS-->
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!--FONTS-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-26256943-3', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <!-- Hotjar Tracking Code for http://www.luisfbmelo.com -->
+  <script>
+      /* (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:132383,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv='); */
+  </script>
+</head>
+
+
+  <body>
+
+    <!--[if lt IE 9]>
+    <div id="nocando">
+      <h1>No can do!</h1>
+      <p>Your browser is too outdated, I recommend using the <strong>latest version</strong> of Chrome, Safari or Firefox.</p>
+      <p>Here: <a href="http://browsehappy.com/" title="Visit Browser happy">upgrade your browser</a>!</p>
+    </div>
+ <![endif]-->
+
+<nav class="menubar text-center">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar">
+      <ul class="menu menubar-nav">
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class=""><a href="/">Home</a></li>
+      
+      
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class=""><a href="/portfolio/">Portfolio</a></li>
+      
+      
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class="active"><a href="/blog/">Blog</a></li>
+      
+      
+                
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="header-top  blog-top top-level-section">
+	<img src="/images/logo_single.png" alt="Brand Logo" class="img-responsive"/>
+	<h2>Blog</h2>
+</div>
+
+<div class="container post">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="breadcrumbs">
+				<a href="/blog/">Blog</a> · AngularJS - Implementing Facebook Comments plugin
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<header class="post-header">
+			    <h1 class="post-title">AngularJS - Implementing Facebook Comments plugin</h1>
+			    <p class="post-meta">Oct 31, 2015</p>
+		  	</header>
+
+			<article class="post-content">
+				<p class="text-center">I'm here to present to you a problem and solution that I encountered in my latest project, implementing Facebook Comments.</p>
+
+<!--more-->
+<p><img src="/images/blog/2015-10-31-angularjs-facebook-comments/angular-facebook-comments.jpg" alt="Welcome!" /></p>
+
+<h1 id="context">Context</h1>
+<p>Recently I developed an online platform that gathers a list of Portuguese descendent artists from all around the world for <a href="http://mirateca.com/" title="Miraceta Arts">Miraceta Arts</a>. One of the user stories for this project describes the need to provide a comment section for the events that are shown.</p>
+
+<p>The thing is, Facebook loads it’s comments asynchronous, and so does AngularJS but they don’t work together. The result of this lack of coordination is a blank space in the HTML since Facebook loads everything when the page finishes loading, but not knowing if AngularJS did also. To workaround this issue, it is necessary to combine them.</p>
+
+<h1 id="solution">Solution</h1>
+<p>There are several steps needed to solve the problem:</p>
+
+<ul>
+  <li><a href="https://developers.facebook.com/" target="_blank" rel="external">Create a Facebook API Key</a> for your application;</li>
+  <li>Place the provided code from Facebook inside the body tag;</li>
+  <li>Make use of AngularJS directives to render the comments section.</li>
+</ul>
+
+<h3 id="create-a-facebook-api-key">Create a Facebook API Key</h3>
+<p>There is a simple process to create a API Key:</p>
+
+<ol>
+  <li>Login to Facebook</li>
+  <li>Access the <a href="https://developers.facebook.com/" target="_blank" rel="external">Developers Section</a></li>
+  <li>In the <strong>My Apps</strong> menu, click in <strong>Add a New App</strong>, and choose your app platform</li>
+  <li>Provide your app name and choose the category.</li>
+</ol>
+
+<h3 id="place-facebook-code-inside-the-body-tag">Place Facebook code inside the body tag</h3>
+<p>In order to initialize the Facebook Javascript SDK, it is necessary to place a specific code block at the begining of the <em>&lt;body&gt;</em> tag:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!--FACEBOOK SDK--&gt;
+&lt;script&gt;
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '&lt;YOUR API KEY&gt;',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/&lt;lan_LAN&gt;/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+&lt;/script&gt;
+&lt;!--END FACEBOOK--&gt;
+</code></pre></div></div>
+
+<p>Have in mind that you must replace <em>&lt;YOUR API KEY&gt;</em> with the API key provided at the <a href="https://developers.facebook.com/" title="Facebook developers section" target="_blank" rel="external">Facebook developers section</a>, and the <em>&lt;lan_LAN&gt;</em> with the correct language that will be used for the localization (e.g., “en_EN”).</p>
+
+<h3 id="angularjs-directives-to-render-the-comments-section">AngularJS directives to render the comments section</h3>
+<p>Now that we have the required scripts to use the Facebook API, it is time to create our AngularJS directive for the comments section.
+This directive will have other child directive that will be responsible to watch the page status and build the plugin. In order to reuse it, we must define the first directive:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var appDirectives = angular.module('appDirectives');
+
+appDirectives.directive('facebookComments', ['$location', function ($location) {
+  return {
+      restrict: 'E',
+      templateUrl: "scripts/directives/facebookComments.html",
+      scope:{},
+      replace: true,
+      link: function(scope, el, attr){
+        scope.curPath = $location.absUrl();
+      }
+   };
+}]);
+</code></pre></div></div>
+
+<p>In the previous code, we are creating a directive as an element <em>(E)</em> with a template that will have the child directive. In order to avoid any scope conflicts, this directive will have a isolated one.
+The most important part of this code is the link function. As this function will only be executed after finish compiling the directive, here we set the current path through the current absolute URL. This information will be used to inform the Facebook plugin which webpage the comments will be associated to.</p>
+
+<p>The second step consists in the directive template:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;div class="fb-comments" dyn-fb-comment-box page-href="{{curPath}}" data-numposts="5" data-colorscheme="light" data-width="100%"&gt;&lt;/div&gt;
+
+</code></pre></div></div>
+
+<p>In this case, we are going to use this template that will have as attributes the required parameters to initialize the comments plugin. As you can see, we are defining a set of important parameters:</p>
+
+<ul>
+  <li><strong>curPath</strong> variable from the parent directive scope to inform what will be the URL for the plugin;</li>
+  <li><strong>data-numposts</strong> that will set the number of posts to be shown;</li>
+  <li><strong>data-colorscheme</strong> to set the theme for the plugin;</li>
+  <li><strong>data-width</strong> to 100% to make it responsive.</li>
+  <li>Make this div a directive through the <strong>dyn-fb-comment-box</strong> attribute (directive name as attribute - <em>A</em>) responsible for the plugin rendering.</li>
+</ul>
+
+<p>With this, it is time to set the child directive:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var appDirectives = angular.module('appDirectives');
+appDirectives.directive('dynFbCommentBox',['$timeout', function ($timeout) {
+    function createHTML(href, numposts, colorscheme, width) {
+        return '&lt;div class="fb-comments" ' +
+                       'data-href="' + href + '" ' +
+                       'data-numposts="' + numposts + '" ' +
+                       'data-colorsheme="' + colorscheme + '" ' +
+                       'data-width="' + width + '"&gt;' +
+               '&lt;/div&gt;';
+    }
+
+    return {
+        restrict: 'A',
+        scope: {},
+        link: function postLink(scope, elem, attrs) {
+          //
+          // Use timeout in order to be called after all watches are done and FB script is loaded
+          //
+          attrs.$observe('pageHref', function (newValue) {
+              var href        = newValue;
+              var numposts    = attrs.numposts    || 5;
+              var colorscheme = attrs.colorscheme || 'light';
+              var width = attrs.width || '100%';
+              elem.html(createHTML(href, numposts, colorscheme, width));
+              $timeout(function () {
+                if (typeof FB != 'undefined'){
+                    FB.XFBML.parse(elem[0]);
+                  }
+              });
+          });
+
+          
+        }
+    };
+}]);
+</code></pre></div></div>
+<p><br />
+Let’s analyze this directive.
+As I stated before, this will be an attribute directive for the sake of simplicity with an isolated scope to avoid any conflicts with the parent. This directive has the purpose to watch/observe the <em>pageHref</em> attribute to understand when the page has changed and gather all the necessary information from the directive attributes. Each attribute will then be passed as parameters to the function <em>createHtml()</em></p>
+
+<p>This function will then overwrite the original html with a markup that is more <em>“Facebook plugin friendly”</em>, i.e., to be recognized by the Facebook API and render the final script.</p>
+
+<p>In the end, we must call the <em>FB.XFBML.parse(&lt;HTML&gt;)</em> to force the plugin to render after all the html and scripts finalize all rendering. To do this, the <em>$timeout()</em> comes to action. By setting no delay, we can ensure that all the code inside it will be executed after everything finishes. Otherwise, the plugin would render, but since AngularJS is on its digest cycle and still rendering, the result will be a blank space.</p>
+
+<p>I hope this small tutorial will help anyone in need and difficulties with this plugin, and if you have any other better solutions, please share with everyone in the comments section bellow :smiley:.</p>
+
+<p><br />
+<strong>Resources</strong> <br />
+<em>Project Repo:</em> <a href="https://github.com/luisfbmelo/artistasluso" target="_blank" rel="external">Github</a></p>
+
+			</article>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="post-cats">
+				Tags: coding, angularjs, devlog
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="share-title-section">
+				<span>Share on</span>
+			</div>
+			<ul class="share-page">			    
+			    <li>
+			    	<a href="https://facebook.com/sharer.php?u=https://luisfbmelo.github.io//blog/2015/10/31/angularjs-facebook-comments/" rel="nofollow" target="_blank" title="AngularJS - Implementing Facebook Comments plugin"><i class="fa fa-facebook"></i></a>
+	    		</li>
+			    <li>
+			    	<a href="https://twitter.com/intent/tweet?text=AngularJS - Implementing Facebook Comments plugin&url=https://luisfbmelo.github.io//blog/2015/10/31/angularjs-facebook-comments/" rel="nofollow" target="_blank" title="AngularJS - Implementing Facebook Comments plugin"><i class="fa fa-twitter"></i></a>
+		    	</li>
+			    <li>
+			    	<a href="https://plus.google.com/share?url=https://luisfbmelo.github.io//blog/2015/10/31/angularjs-facebook-comments/" rel="nofollow" target="_blank" title="AngularJS - Implementing Facebook Comments plugin"><i class="fa fa-google-plus"></i></a>
+		    	</li>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<div class="container disqus-container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">
+				    /* * * CONFIGURATION VARIABLES * * */
+				    var disqus_shortname = 'luisfbmelo';
+				    
+				    /* * * DON'T EDIT BELOW THIS LINE * * */
+				    (function() {
+				        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				    })();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+	</div>
+
+
+
+
+    <footer class="site-footer">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="social-icons-box">
+					<li><a href="https://github.com/luisfbmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://www.facebook.com/luisfbmelo" target="_blank"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://www.behance.net/luisfbmelo" target="_blank"><i class="fa fa-behance"></i></a></li>
+					<li><a href="https://500px.com/luisfbmelo" target="_blank"><i class="socicon socicon-500px"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<p>
+					This website was developed using <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="http://browserify.org/" target="_blank">Browserify</a>.
+				</p>
+				<p>
+					The full source code can be found on <a href="https://github.com/luisfbmelo/portfolio_v2" target="_blank">Github</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="/js/bundle.min.js" async ></script>
+
+  </body>
+
+</html>

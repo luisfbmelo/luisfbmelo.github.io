@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <!--SEO-->
+  <title>AngularJS SEO with PHP · Luis Melo</title>
+  <meta name="description" content="As a continuity of my last post about Facebook Comments with AngularJS, I present you a very common situation when developing a SPA (Single Page Application)...">
+  <meta name="keywords" content="Luis, Melo, multimedia, portfolio, web, design, development, photography, HTML, CSS, XML, JavaScript, jekyll, angularjs, blog, personal, nature, landscape, coding, fotografia, fotografo, programação, paisagem, eventos, batizado">
+  <meta name="author" content="Luis Melo">
+
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="AngularJS SEO with PHP">
+  <meta itemprop="description" content="As a continuity of my last post about Facebook Comments with AngularJS, I present you a very common situation when developing a SPA (Single Page Application)...">
+  <meta itemprop="image" content="https://luisfbmelo.github.io//images/blog/2015-12-04-angularjs-seo-with-php/angular-seo.jpg">
+
+  <!-- Twiter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@luisfbmelo"> 
+  <meta name="twitter:title" content="AngularJS SEO with PHP">
+  <meta name="twitter:description" content="As a continuity of my last post about Facebook Comments with AngularJS, I present you a very common situation when developing a SPA (Single Page Application)...">
+  <meta name="twitter:image:src" content="https://luisfbmelo.github.io//images/blog/2015-12-04-angularjs-seo-with-php/angular-seo.jpg">
+  <!--/ Twiter Cards -->
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Luis Melo">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AngularJS SEO with PHP" />
+  <meta property="og:url" content="https://luisfbmelo.github.io//blog/2015/12/04/angularjs-seo-with-php/">
+  <meta property="og:description" content="As a continuity of my last post about Facebook Comments with AngularJS, I present you a very common situation when developing a SPA (Single Page Application)...">
+  <meta property="og:image" content="https://luisfbmelo.github.io//images/blog/2015-12-04-angularjs-seo-with-php/angular-seo.jpg">
+  <!--/ Open Graph -->
+
+  <link rel="canonical" href="https://luisfbmelo.github.io//blog/2015/12/04/angularjs-seo-with-php/">
+  <link rel="alternate" type="application/rss+xml" title="Luis Melo" href="https://luisfbmelo.github.io//feed.xml" />
+
+  <!--FAV ICON-->
+  <link rel="apple-touch-icon" sizes="57x57" href="https://luisfbmelo.github.io//images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://luisfbmelo.github.io//images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://luisfbmelo.github.io//images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://luisfbmelo.github.io//images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://luisfbmelo.github.io//images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://luisfbmelo.github.io//images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://luisfbmelo.github.io//images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://luisfbmelo.github.io//images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://luisfbmelo.github.io//images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://luisfbmelo.github.io//images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://luisfbmelo.github.io//images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://luisfbmelo.github.io//images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://luisfbmelo.github.io//images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://luisfbmelo.github.io//images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="https://luisfbmelo.github.io//images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!--CSS-->
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!--FONTS-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-26256943-3', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <!-- Hotjar Tracking Code for http://www.luisfbmelo.com -->
+  <script>
+      /* (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:132383,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv='); */
+  </script>
+</head>
+
+
+  <body>
+
+    <!--[if lt IE 9]>
+    <div id="nocando">
+      <h1>No can do!</h1>
+      <p>Your browser is too outdated, I recommend using the <strong>latest version</strong> of Chrome, Safari or Firefox.</p>
+      <p>Here: <a href="http://browsehappy.com/" title="Visit Browser happy">upgrade your browser</a>!</p>
+    </div>
+ <![endif]-->
+
+<nav class="menubar text-center">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar">
+      <ul class="menu menubar-nav">
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class=""><a href="/">Home</a></li>
+      
+      
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class=""><a href="/portfolio/">Portfolio</a></li>
+      
+      
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class="active"><a href="/blog/">Blog</a></li>
+      
+      
+                
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="header-top  blog-top top-level-section">
+	<img src="/images/logo_single.png" alt="Brand Logo" class="img-responsive"/>
+	<h2>Blog</h2>
+</div>
+
+<div class="container post">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="breadcrumbs">
+				<a href="/blog/">Blog</a> · AngularJS SEO with PHP
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<header class="post-header">
+			    <h1 class="post-title">AngularJS SEO with PHP</h1>
+			    <p class="post-meta">Dec 4, 2015</p>
+		  	</header>
+
+			<article class="post-content">
+				<p class="text-center">
+As a continuity of my last post about <a href="http://luisfbmelo.com/blog/2015/10/31/angularjs-facebook-comments/" title="Facebook Comments with AngularJS">Facebook Comments with AngularJS</a>, I present you a very common situation when developing a SPA (Single Page Application), <strong>SEO</strong>.
+</p>
+
+<!--more-->
+<p><img src="/images/blog/2015-12-04-angularjs-seo-with-php/angular-seo.jpg" alt="AngularJS SEO with PHP" /></p>
+
+<h1 id="context">Context</h1>
+<p>When developing a SPA, the information provided in the HTML has to be requested via AJAX with Javascript. This has great advantages, such as client-side rendering, avoid page refresh, amazing flexibility with DOM manipulation, web components, and so on. But with this paradise comes a curse. At the time of this post, web crawlers are still unable to render Javascript (except Google as far as I know) and as a result, they can not read any content that makes your web app amazing and if this happens, we start facing some major SEO issues.</p>
+
+<p>But why not, you ask? Well, if you have used AngularJS before you noticed the “#” character that shows up in the URL. This symbol is known as “fragment identifier” and the first intend when the internet showed up was to create anchors for links within a webpage, but now is also used to prevent page reload when dealing with AJAX-based webpages.</p>
+
+<p>Let’s say that you have a user profile page that you want to be able to share on Facebook, Twitter or other platform. These crawlers make use of metatags to retrieve the necessary data to display in those platforms and since we are using AngularJS, the most probable way of achieving this is by using the expression syntax <strong>{{ foo_bar }}</strong>. As I said before, crawlers are unable to render Javascript and this is what will happen, e.g, in Facebook:</p>
+
+<p><img src="/images/blog/2015-12-04-angularjs-seo-with-php/screwed_post.png" alt="Screwed up information from Facebook crawler" /></p>
+<p class="text-center" style="padding-bottom:20px;">
+<em>From <a href="http://stackoverflow.com/questions/32380547/angularjs-spa-and-linking-from-social-media" target="_blank" rel="external">StackOverflow</a></em>
+</p>
+
+<p>Fear not, there are several solutions that can help you create a SEO Friendly SPAs.</p>
+
+<p><em>Note: this article is focused on a <strong>PHP solution</strong> since my projects are stored in <strong>shared hosting</strong> and I’m unable to install NodeJS or other specific technology that is not provided by the host.</em></p>
+
+<h1 id="solution">Solution</h1>
+<p>The solution is in providing static “snapshots” of your html with all content ready to be shown. That is why server-side rendered webpages don’t have this problem since it is all provided on each page load. In this example I will explain to you how this can be achieved with PHP (take a look also at the <a href="http://www.yearofmoo.com/2012/11/angularjs-and-seo.html" target="_blank" rel="external">PhantomJS Solution</a> for an automated solution, but that can not be applied in this example development environment).</p>
+
+<p>There are several steps needed to solve the problem:</p>
+
+<ul>
+  <li>Set AngularJS to use crawler friendly URLs in order to “contact” the server first as a hub;</li>
+  <li>Configure Apache (.htaccess) to redirect all requests that come from crawlers;</li>
+  <li>Request the content from the API and provide the filled HTML.</li>
+</ul>
+
+<h3 id="set-angularjs-to-use-crawler-friendly-urls">Set AngularJS to use crawler friendly URLs</h3>
+<p>Right now, AngularJS is using the hash to provide content via Ajax. In order to start making direct <em>HTTP</em> requests to the server, we must activate the <em>HTML5</em> mode and start using <em>pushState</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var app = angular.module('myapp', []);
+
+app.config(['$locationProvider', function($locationProvider) {
+
+  //
+  // Remove hash and use pushState
+  //
+  $locationProvider.html5Mode(true);
+
+}]);
+</code></pre></div></div>
+
+<p>By enabeling <em>HTML5</em> mode, the app will start making use of the <em>HTML5 History API</em> in order to provide nagivation between pages using URLs like <strong>www.myapp.com/app-page</strong> without any page reload.</p>
+
+<p>Don’t forget also to place the <strong><base href="/" /></strong> tag next to the <strong>head</strong> of your webpage, since the base URL is  used to resolve all relative URLs throughout the application regardless of the entry point into the app, unless you configure <em>$locationProvider</em> to not require a base tag by passing a definition object with <em>requireBase:false</em> to <em>$locationProvider.html5Mode()</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$locationProvider.html5Mode({
+  enabled: true,
+  requireBase: false
+});
+</code></pre></div></div>
+
+<p>So now we must take care of the requests server-side.</p>
+
+<h3 id="configure-apache">Configure Apache</h3>
+<p>Since AngularJS now provides “normal” URLs (without the fragment identifier) and therefore, it is necessary to prepare it to respond.</p>
+
+<p><em>Before doing this, have in mind that there is necessary to have <strong>mod_rewrite, mod_proxy and mod_proxy_http</strong> modules installed on your web server.</em></p>
+
+<p>First of all, you need to specify what will be your main webpage for a normal user (non-crawler):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ifModule mod_rewrite.c&gt;
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !index
+  RewriteRule (.*) index.html [L]
+&lt;/ifModule&gt;
+</code></pre></div></div>
+
+<p>What we are doing here is creating a set of rules, rewrite rules, that verifies if the request has the destination of a non-existing file, directory (line 3 and 4) in order to allow access to real files and checks if the request URL is different from “index”.</p>
+
+<p>If these conditions are not met, then redirect to index.html will happen, were our SPA is runnable. This way, we ensure that every <em>HTTP</em> request will redirect to the SPA and not to other file in the server if not intended.</p>
+
+<p>Now that we have the app runing, we must check if the <em>HTTP</em> request comes from a crawler:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet|Google)
+RewriteRule myapp/page/(\d*)$ http://www.myapp.net/snapshots/page.php?id=$1 [P]
+</code></pre></div></div>
+
+<p>In the first line, we have the ability to understand if the request comes from Facebook, Twitter, Pinterest or even Google. When true, we are able to write a set of rules that will provide information from a PHP file according to the requested URL. 
+In the second line, by using the [P] we are also informing Apache to use a mod_proxy module, i.e., access page.php without the crawler knowing that a redirection has occured.</p>
+
+<p>With this set up, we will have this <strong>.htaccess</strong> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ifModule mod_rewrite.c&gt;
+   RewriteEngine On
+
+  # allow social media crawlers to work by redirecting them to a server-rendered static version on the page
+  RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet|Google)
+  RewriteRule myapp/page/(\d*)$ http://www.myapp.com/snapshots/page.php?id=$1 [P]
+
+  RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet|Google)
+  RewriteRule myapp/page2/(\d*)$ http://www.myapp.com/snapshots/page2.php?id=$1 [P]
+
+  ...
+
+  # Required to allow direct-linking of pages so they can be processed by Angular
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !index
+  RewriteRule (.*) index.html [L]
+&lt;/ifModule&gt;
+</code></pre></div></div>
+
+<p>Now we can prepare our PHP files to retrieve the necessary information.</p>
+
+<h3 id="provide-the-html">Provide the HTML</h3>
+<p>Assuming that you are using an API to get data, we are able to reuse it with the back-end script just like AngularJS does. Let’s have an example of a profile page:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?php
+$API = 'http://www.myapp.com/api/';
+$siteRoot = 'http://www.myapp.com/';
+$imagesUrl = 'http://www.myapp.com/images/';
+
+$jsonData = getData($API);
+makePage($jsonData, $siteRoot, $imagesUrl);
+
+// Request data from the API
+function getData($api) {
+    $id = (isset($_GET['id']) &amp;&amp; ctype_digit($_GET['id'])) ? $_GET['id'] : 1;
+    $rawData = file_get_contents($api.'users/'.$id);
+    return json_decode($rawData);
+}
+
+// Prepare variables for HTML
+function makePage($data, $siteRoot, $imagesUrl) {
+    $imageUrl = $imagesUrl . $data-&gt;image-&gt;url;
+    $pageUrl = $siteRoot . "user/details/" . $data-&gt;id;
+    $title = 'User - '.$data-&gt;name;
+    $description = strip_tags($data-&gt;description);
+?&gt;
+</code></pre></div></div>
+
+<p>We start by defining all paths necessary to make the requests and print some specific data. After this, a request for the necessary data is executed through the API and the variables that will be used in our HTML are prepared.</p>
+
+<p>Now let’s fill the HTML:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;base href="/"&gt;
+  &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"&gt;
+    &lt;title&gt;My App&lt;/title&gt;
+
+    &lt;!--META--&gt;
+    &lt;!--facebook--&gt;
+    &lt;meta property="fb:app_id" content="{YOUR_APP_KEY}"&gt;
+    &lt;meta property="fb:admins" content="{YOUR_ADMIN_KEY}"/&gt;
+
+    &lt;!--SEO--&gt;
+    &lt;meta name="description" content="&lt;?php echo $description; ?&gt;"&gt;
+    &lt;meta name="keywords" content=""&gt;
+    &lt;meta name="author" content="My App"&gt;
+
+    &lt;!-- Schema.org markup for Google+ --&gt;
+    &lt;meta itemprop="name" content="&lt;?php echo $title; ?&gt;"&gt;
+    &lt;meta itemprop="description" content="&lt;?php echo $description; ?&gt;"&gt;
+    &lt;meta itemprop="image" content="&lt;?php echo $imageUrl; ?&gt;"&gt;
+
+    &lt;!-- Twiter Cards --&gt;
+    &lt;meta name="twitter:card" content="summary"&gt;
+    &lt;meta name="twitter:site" content="@myapp"&gt; 
+    &lt;meta name="twitter:title" content="&lt;?php echo $title; ?&gt;"&gt;
+    &lt;meta name="twitter:description" content="&lt;?php echo $description; ?&gt;"&gt;
+    &lt;meta name="twitter:image:src" content="&lt;?php echo $imageUrl; ?&gt;"&gt;
+    &lt;!--/ Twiter Cards --&gt;
+
+    &lt;!-- Open Graph --&gt;
+    &lt;meta property="og:site_name" content="My App"&gt;
+    &lt;meta property="og:type" content="website"&gt;
+    &lt;meta property="og:title" content="&lt;?php echo $title; ?&gt;" /&gt;
+    &lt;meta property="og:url" content="&lt;?php echo $pageUrl; ?&gt;"&gt;
+    &lt;meta property="og:description" content="&lt;?php echo $description; ?&gt;"&gt;
+    &lt;meta property="og:image" content="&lt;?php echo $imageUrl; ?&gt;"&gt;
+    &lt;!--/ Open Graph --&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;img src="&lt;?php echo $imageUrl; ?&gt;"&gt;
+  &lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;
+  &lt;p&gt;&lt;?php echo $description; ?&gt;&lt;/p&gt;      
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<p>In this example I provide the most common meta tags for the digital social media crawlers. Since Google crawler also gives a lot of relevance to content, it is equaly essencial to fill the body tag with the right semantic and information, boosting your rating and providing credibility to the crawler.</p>
+
+<h1 id="lets-test-this-out">Lets test this out</h1>
+<p>With everything set up, it is time to see if this solution is really working. There are tools online that provide some kind of validation:</p>
+
+<ul>
+  <li><a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="external">Facebook Open Graph Object Debugger</a></li>
+  <li><a href="https://dev.twitter.com/docs/cards/validation/validator" target="_blank" rel="external">Twitter Card Validator</a></li>
+  <li><a href="https://developers.pinterest.com/rich_pins/validator/" target="_blank" rel="external">Pinterest Rich Pin Validator</a></li>
+  <li><a href="http://www.google.com/webmasters/tools/richsnippets" target="_blank" rel="external">Google Structured Data Testing tool</a></li>
+</ul>
+
+<p>Have in mind that this is a final solution, and there are other alternatives that could suit you better and automate this process.
+It is a major drawback that crawlers are still not ready to deal with these technologies that are transforming the internet and for now, we have to deal with it. Have also look at other solutions such as <a href="https://prerender.io/" target="_blank" rel="external">Prerender.io</a> or <a href="http://phantomjs.org/" target="_blank" rel="external">PhantomJS</a>.</p>
+
+<p>If you have other ideas and solutions, please be free to share because this is a problem that will chase us for a while.</p>
+
+			</article>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="post-cats">
+				Tags: coding, angularjs, devlog, seo
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="share-title-section">
+				<span>Share on</span>
+			</div>
+			<ul class="share-page">			    
+			    <li>
+			    	<a href="https://facebook.com/sharer.php?u=https://luisfbmelo.github.io//blog/2015/12/04/angularjs-seo-with-php/" rel="nofollow" target="_blank" title="AngularJS SEO with PHP"><i class="fa fa-facebook"></i></a>
+	    		</li>
+			    <li>
+			    	<a href="https://twitter.com/intent/tweet?text=AngularJS SEO with PHP&url=https://luisfbmelo.github.io//blog/2015/12/04/angularjs-seo-with-php/" rel="nofollow" target="_blank" title="AngularJS SEO with PHP"><i class="fa fa-twitter"></i></a>
+		    	</li>
+			    <li>
+			    	<a href="https://plus.google.com/share?url=https://luisfbmelo.github.io//blog/2015/12/04/angularjs-seo-with-php/" rel="nofollow" target="_blank" title="AngularJS SEO with PHP"><i class="fa fa-google-plus"></i></a>
+		    	</li>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<div class="container disqus-container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">
+				    /* * * CONFIGURATION VARIABLES * * */
+				    var disqus_shortname = 'luisfbmelo';
+				    
+				    /* * * DON'T EDIT BELOW THIS LINE * * */
+				    (function() {
+				        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				    })();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+	</div>
+
+
+
+
+    <footer class="site-footer">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="social-icons-box">
+					<li><a href="https://github.com/luisfbmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://www.facebook.com/luisfbmelo" target="_blank"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://www.behance.net/luisfbmelo" target="_blank"><i class="fa fa-behance"></i></a></li>
+					<li><a href="https://500px.com/luisfbmelo" target="_blank"><i class="socicon socicon-500px"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<p>
+					This website was developed using <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="http://browserify.org/" target="_blank">Browserify</a>.
+				</p>
+				<p>
+					The full source code can be found on <a href="https://github.com/luisfbmelo/portfolio_v2" target="_blank">Github</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="/js/bundle.min.js" async ></script>
+
+  </body>
+
+</html>

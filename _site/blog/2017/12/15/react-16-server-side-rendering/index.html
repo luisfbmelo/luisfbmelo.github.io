@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <!--SEO-->
+  <title>Server Side Rendering in ReactJS - from v15 to v16 · Luis Melo</title>
+  <meta name="description" content="This was a year of big changes in the ReactJS world, with the coming of a new version, v16. And one of those affected the Server Side Rendering scripts used ...">
+  <meta name="keywords" content="Luis, Melo, multimedia, portfolio, web, design, development, photography, HTML, CSS, XML, JavaScript, jekyll, angularjs, blog, personal, nature, landscape, coding, fotografia, fotografo, programação, paisagem, eventos, batizado">
+  <meta name="author" content="Luis Melo">
+
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Server Side Rendering in ReactJS - from v15 to v16">
+  <meta itemprop="description" content="This was a year of big changes in the ReactJS world, with the coming of a new version, v16. And one of those affected the Server Side Rendering scripts used ...">
+  <meta itemprop="image" content="https://luisfbmelo.github.io//images/blog/2017-12-15-react-16-server-side-rendering/react-ssr.jpg">
+
+  <!-- Twiter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@luisfbmelo"> 
+  <meta name="twitter:title" content="Server Side Rendering in ReactJS - from v15 to v16">
+  <meta name="twitter:description" content="This was a year of big changes in the ReactJS world, with the coming of a new version, v16. And one of those affected the Server Side Rendering scripts used ...">
+  <meta name="twitter:image:src" content="https://luisfbmelo.github.io//images/blog/2017-12-15-react-16-server-side-rendering/react-ssr.jpg">
+  <!--/ Twiter Cards -->
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Luis Melo">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Server Side Rendering in ReactJS - from v15 to v16" />
+  <meta property="og:url" content="https://luisfbmelo.github.io//blog/2017/12/15/react-16-server-side-rendering/">
+  <meta property="og:description" content="This was a year of big changes in the ReactJS world, with the coming of a new version, v16. And one of those affected the Server Side Rendering scripts used ...">
+  <meta property="og:image" content="https://luisfbmelo.github.io//images/blog/2017-12-15-react-16-server-side-rendering/react-ssr.jpg">
+  <!--/ Open Graph -->
+
+  <link rel="canonical" href="https://luisfbmelo.github.io//blog/2017/12/15/react-16-server-side-rendering/">
+  <link rel="alternate" type="application/rss+xml" title="Luis Melo" href="https://luisfbmelo.github.io//feed.xml" />
+
+  <!--FAV ICON-->
+  <link rel="apple-touch-icon" sizes="57x57" href="https://luisfbmelo.github.io//images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://luisfbmelo.github.io//images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://luisfbmelo.github.io//images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://luisfbmelo.github.io//images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://luisfbmelo.github.io//images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://luisfbmelo.github.io//images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://luisfbmelo.github.io//images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://luisfbmelo.github.io//images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://luisfbmelo.github.io//images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://luisfbmelo.github.io//images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://luisfbmelo.github.io//images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://luisfbmelo.github.io//images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://luisfbmelo.github.io//images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://luisfbmelo.github.io//images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="https://luisfbmelo.github.io//images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!--CSS-->
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!--FONTS-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-26256943-3', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <!-- Hotjar Tracking Code for http://www.luisfbmelo.com -->
+  <script>
+      /* (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:132383,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv='); */
+  </script>
+</head>
+
+
+  <body>
+
+    <!--[if lt IE 9]>
+    <div id="nocando">
+      <h1>No can do!</h1>
+      <p>Your browser is too outdated, I recommend using the <strong>latest version</strong> of Chrome, Safari or Firefox.</p>
+      <p>Here: <a href="http://browsehappy.com/" title="Visit Browser happy">upgrade your browser</a>!</p>
+    </div>
+ <![endif]-->
+
+<nav class="menubar text-center">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar">
+      <ul class="menu menubar-nav">
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class=""><a href="/">Home</a></li>
+      
+      
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class=""><a href="/portfolio/">Portfolio</a></li>
+      
+      
+      
+        <!-- Set test variable to false -->
+        
+          
+        <!-- Get page url and loop item string size -->
+        
+        
+
+        <!-- Check if page url contains chars from loop item -->
+        
+        
+        <!-- Check if page url is home without pretty url and loop item is also home -->
+        
+
+        <!-- If page is not home, and still contains part of home url and current loop item is home -->
+        
+
+        <li class="active"><a href="/blog/">Blog</a></li>
+      
+      
+                
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="header-top  blog-top top-level-section">
+	<img src="/images/logo_single.png" alt="Brand Logo" class="img-responsive"/>
+	<h2>Blog</h2>
+</div>
+
+<div class="container post">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="breadcrumbs">
+				<a href="/blog/">Blog</a> · Server Side Rendering in ReactJS - from v15 to v16
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<header class="post-header">
+			    <h1 class="post-title">Server Side Rendering in ReactJS - from v15 to v16</h1>
+			    <p class="post-meta">Dec 15, 2017</p>
+		  	</header>
+
+			<article class="post-content">
+				<p class="text-center">This was a year of big changes in the ReactJS world, with the coming of a new version, v16. And one of those affected the Server Side Rendering scripts used in the old version, v15.</p>
+
+<!--more-->
+<p><img src="/images/blog/2017-12-15-react-16-server-side-rendering/thumb/react-ssr.jpg" alt="React v16 SSR!" /></p>
+
+<h1 id="how-ssr-works-in-react-15">How SSR Works In React 15</h1>
+<p>First, let’s have a look of how SSR works in React 15. To do so, it is necessary to run a Node server (Express in my case), and run <code class="language-plaintext highlighter-rouge">renderToString</code> in order to get the rendered elements and include them as HTML when ending the response.</p>
+
+<p>So, it should start with the store construction, in order to create the initial view, and check any routing match:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.use(function(req, res){
+  // Create store with the middlewares that you need, the `createStore` method from Redux and your reducers
+  const store = applyMiddleware(multi, thunkMiddleware, apiMiddleware)(createStore)(reducers);
+
+  // Check any match with the given routes and current request location
+  match({ routes: appRoutes, location: req.url }, function(err, redirectLocation, renderProps){
+    
+    // Handle server error
+    if(err) {
+      console.error(err);
+      return res.status(500).end('Internal server error');
+    }
+
+    // If no match based on the props for the routing context, then give 404
+    if(!renderProps)
+      return res.status(404).end('Not found');
+
+    ...
+</code></pre></div></div>
+
+<p>Next, it is necessary to start provide the Routing components with the given context in renderProps and return the HTML that will be filled with the initialState and the rendered React Components, from the <code class="language-plaintext highlighter-rouge">ReactDOM.renderToString()</code> method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...
+
+  function renderView() {
+    // Start initial view with the store data and routing context
+    const InitialView = (
+      &lt;Provider store={store}&gt;
+        &lt;RouterContext {...renderProps} /&gt;
+      &lt;/Provider&gt;
+    );
+
+    // Render ReactJS Components
+    const componentHTML = ReactDOM.renderToString(InitialView);      
+
+    // Get initial state from store to append in the DOM
+    const initialState = store.getState();
+
+    // Set HTML with the initial state and rendered components
+    const HTML = `
+      &lt;!DOCTYPE html&gt;
+        &lt;head&gt;
+          &lt;title&gt;This is a SSR post&lt;/title&gt;
+          &lt;script&gt;
+            window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          &lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;div id="site-canvas"&gt;&lt;div&gt;${componentHTML}&lt;/div&gt;&lt;/div&gt;
+        &lt;/body&gt;
+       &lt;/html&gt;`;
+    return HTML;
+  }
+</code></pre></div></div>
+
+<p>Have in mind that it is necessary to have the <code class="language-plaintext highlighter-rouge">&lt;Provider /&gt;</code> component as a <code class="language-plaintext highlighter-rouge">&lt;Router /&gt;</code> ancestor in order to work.</p>
+
+<p>In the end, the <code class="language-plaintext highlighter-rouge">renderView</code> function is called after fetching the components data, sending the final HTML to the client:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...
+  
+  fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+      .then(renderView)
+      .then(html =&gt; res.end(html))
+      .catch(err =&gt; res.json({message:err.message}));
+
+}); // Closing `app.use()`
+</code></pre></div></div>
+
+<p>About this last line of code, you should have a <code class="language-plaintext highlighter-rouge">needs</code> variable inside each parent component. In my way of organizing the components, I create a wrapper component called <code class="language-plaintext highlighter-rouge">&lt;App /&gt;</code> that wraps all components, and after that wrapper, there is a component for each route (e.g. <code class="language-plaintext highlighter-rouge">&lt;AppsPage /&gt;</code>). Inside each page component, there is a <code class="language-plaintext highlighter-rouge">needs</code> variable with all the actions that should be despatched before sending the final HTML to the client:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AppsPage.needs = [    
+    fetchConfig,
+    fetchApps
+];
+</code></pre></div></div>
+
+<p>and my routing looks like so:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Route path="/" name="Index" component={App}&gt;
+    &lt;Route name="Applications" path="Apps" component={AppsPage} /&gt;
+&lt;/Route&gt;
+</code></pre></div></div>
+
+<h1 id="how-ssr-works-in-react-16">How SSR Works In React 16</h1>
+
+<h3 id="render-becomes-hydrate">render() Becomes hydrate()</h3>
+<p>The first change to do in your code is to use hydrate() instead of render(). You can still use <code class="language-plaintext highlighter-rouge">render()</code>, but it will become deprecated in React v17, but I would highly recomend use the new method in order to avoid warnings. So now, your code should be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { hydrate } from "react-dom";
+
+...
+
+ReactDOM.hydrate(
+  &lt;Provider store={store}&gt;
+    // Custom component with the react-router v4 routes centralized in a single component
+    &lt;CustomRoutes /&gt;
+  &lt;/Provider&gt;
+  , document.getElementById('site-canvas'));
+</code></pre></div></div>
+
+<h3 id="new-way-of-matching-routes">New way of matching routes</h3>
+<p>So now, there is no <code class="language-plaintext highlighter-rouge">match()</code> method from react-router to help us in matching any routes. I will not explain it since there are other websites that do that better then me.</p>
+
+<p>In order to match the routes, create a new function inside the <code class="language-plaintext highlighter-rouge">app.use()</code> context:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { StaticRouter, matchPath } from 'react-router-dom';
+
+...
+
+app.use(function(req, res){
+  // Create store with the middlewares that you need, the `createStore` method from Redux and your reducers
+  const store = applyMiddleware(multi, thunkMiddleware, apiMiddleware)(createStore)(reducers);
+  
+  // These variables are going to be used in the end, in order to have enought information to fetch the state from the rendered components
+  let params = {},
+      components = [];
+
+  // Match routes
+  function routerMatch(req, routes = null) {
+    // For each route in the provided variable
+    routes.map(route =&gt; {
+  
+      // Check for any hierarchy. If so, use recursive
+      if(route.routes &amp;&amp; !route.path){
+        routerMatch(req, route.routes);
+
+      }else{
+        // Check for any match
+        const match = matchPath(req.path, route);
+        
+        // If any, assign `params` to the object
+        // And push the component to the `components` array
+        if (match &amp;&amp; components.length==0){
+          Object.assign(params, match.params);
+          components.push(route.component);
+        }
+      }
+    });
+  }
+
+  ...
+
+</code></pre></div></div>
+
+<p>In this new version, <code class="language-plaintext highlighter-rouge">react-router-dom</code>, the new <code class="language-plaintext highlighter-rouge">react-router</code> package, instead of using the  <code class="language-plaintext highlighter-rouge">&lt;RouterContext /&gt;</code>, we should use <code class="language-plaintext highlighter-rouge">&lt;StaticRouter /&gt;</code> with all the routes as children.</p>
+
+<p>So now, in the <code class="language-plaintext highlighter-rouge">renderView()</code> function:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  function renderView() {
+    const context = {};
+
+    const InitialView = (
+      &lt;Provider store={store}&gt;
+        &lt;StaticRouter location={req.url} context={context}&gt;
+            &lt;RoutesObj /&gt;
+        &lt;/StaticRouter&gt;
+      &lt;/Provider&gt;
+    );
+
+    ...
+</code></pre></div></div>
+
+<p>First, we should provite store to the provider in order to share it with the whole app. Then, we provide the current url and the context to the <code class="language-plaintext highlighter-rouge">StaticRouter</code>, in order to keep track of the current location and also detect any redirects.</p>
+
+<p>In the end, provide any routes that will be part of your app.</p>
+
+<p>Everything keeps almost the same:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ...
+
+    const componentHTML = ReactDOMServer.renderToString(InitialView);
+
+    const initialState = store.getState();
+
+    // Set HTML with the initial state and rendered components
+    const HTML = `
+      &lt;!DOCTYPE html&gt;
+        &lt;head&gt;
+          &lt;title&gt;This is a SSR post&lt;/title&gt;
+          &lt;script&gt;
+            window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          &lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;div id="site-canvas"&gt;&lt;div&gt;${componentHTML}&lt;/div&gt;&lt;/div&gt;
+        &lt;/body&gt;
+       &lt;/html&gt;`;
+    return HTML;
+  }
+
+  ...
+</code></pre></div></div>
+
+<p>After creating the HTML, we search for a match with the router configuration and fetch all data from the <code class="language-plaintext highlighter-rouge">components</code> and <code class="language-plaintext highlighter-rouge">params</code> variables:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...
+
+  // Get any match from the router configuration (`routesServer`)
+  routerMatch(req, routesServer);
+
+  // Fetch data from `needs` array
+  fetchComponentData(store.dispatch, components, params)
+      .then(renderView)
+      .then(html =&gt; res.end(html))
+      .catch(err =&gt; res.json({message:err.message}));
+  }
+
+}); // Closing `app.use()`
+</code></pre></div></div>
+
+<p>Keep in mind that the <code class="language-plaintext highlighter-rouge">routesServer</code> must be a configuration array, just like in <a href="https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config" target="_blank" rel="external">react-router-config</a>.</p>
+
+<p><strong>The <code class="language-plaintext highlighter-rouge">matchPath</code>, from <code class="language-plaintext highlighter-rouge">react-router</code>, will not work directly with Router components.</strong></p>
+
+<h3 id="why-not-rendertonodestream">Why not renderToNodeStream?</h3>
+<p>React v16 also supports rendering from a Node stream using <a href="https://reactjs.org/docs/react-dom-server.html#rendertonodestream" target="_blank" rel="external">renderToNodeStream</a>, but in this case, there is a gotcha, at least for some projects that I’m developing.</p>
+
+<p>If you are injecting dynamic data in the <code class="language-plaintext highlighter-rouge">HTML</code> constant, such as meta information, CSS or script files, then this method will not work since there is not possible to embed a Readable stream as an element in a component, just like we are doing in the <code class="language-plaintext highlighter-rouge">HTML</code> definition with the <code class="language-plaintext highlighter-rouge">${componentHTML}</code>. This is only possible with strings returned from the <code class="language-plaintext highlighter-rouge">renderToString()</code>.</p>
+
+<h3 id="in-the-end">In the end…</h3>
+<p>Keep in mind that there are a few changes that must be performed in the client-side code, such as the routes configuration that should match the new <code class="language-plaintext highlighter-rouge">react-router</code> version and documentation.</p>
+
+<p>These are major changes in the new version of React that in some cases, require a major refactor of your whole app, but at least SSR has only a few changes, based on the “older ways”.</p>
+
+<p>I hope that this article helps you migrating your code to the new React, and be free to comment in the section bellow with sugestions, questions and other solutions that would improve our code base.</p>
+
+<h1 id="full-code">Full code</h1>
+<p>Since the project repos are private for now, here I provide you the code for both versions, with comments to help understand each line of code.</p>
+
+<h2 id="react-v15">React v15</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+
+//
+//  React Server Render
+//
+app.use(function(req, res){
+  // Create store with the middlewares that you need, the `createStore` method from Redux and your reducers
+  const store = applyMiddleware(multi, thunkMiddleware, apiMiddleware)(createStore)(reducers);
+
+  // Check any match with the given routes and current request location
+  match({ routes: appRoutes, location: req.url }, function(err, redirectLocation, renderProps){
+    
+    // Handle server error
+    if(err) {
+      console.error(err);
+      return res.status(500).end('Internal server error');
+    }
+
+    // If no match based on the props for the routing context, then give 404
+    if(!renderProps)
+      return res.status(404).end('Not found');
+
+    function renderView() {
+      const InitialView = (
+        &lt;Provider store={store}&gt;
+          &lt;RouterContext {...renderProps} /&gt;
+        &lt;/Provider&gt;
+      );
+      // Render ReactJS Components
+      const componentHTML = ReactDOM.renderToString(InitialView);      
+
+      // Get initial state from store to append in the DOM
+      const initialState = store.getState();
+
+      // Set the JS Template to return
+      const HTML = `
+      &lt;!DOCTYPE html&gt;
+        &lt;head&gt;
+          &lt;title&gt;This is a SSR post&lt;/title&gt;
+          &lt;script&gt;
+            window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          &lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;div id="site-canvas"&gt;&lt;div&gt;${componentHTML}&lt;/div&gt;&lt;/div&gt;
+        &lt;/body&gt;
+       &lt;/html&gt;`;
+
+       return HTML;
+    }
+  
+    // Fetch data from `needs` array
+    fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+      .then(renderView)
+      .then(html =&gt; res.end(html))
+      .catch(err =&gt; res.json({message:err.message}));
+  });
+});
+
+...
+</code></pre></div></div>
+
+<h2 id="react-v16">React v16</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+// Libs
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { StaticRouter, matchPath } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+// Components
+import RoutesObj, {routesServer} from '../public/assets/scripts/routes/routes';
+
+// Utils
+import fetchComponentData  from './utils/fetchComponentData';
+
+...
+
+//
+//  React Server Render
+//
+app.use(function(req, res){
+  
+  // Handle the request for the favicon
+  // Otherwise, the `/*` route for the 404 will match in this case and break the routing
+  if (req.url === '/favicon.ico') {
+    res.writeHead(200, {'Content-Type': 'image/x-icon'} );
+    res.end();
+    console.log('favicon requested');
+    return;
+
+  }else{
+    // Create store with the middlewares that you need, the `createStore` method from Redux and your reducers
+    const store = applyMiddleware(multi, thunkMiddleware, apiMiddleware)(createStore)(reducers);
+
+     // These variables are going to be used in the end, in order to have enought information to fetch the state from the rendered components
+    let params = {},
+      components = [];
+
+    /**
+     * Get match of routes
+     */
+    function routerMatch(req, routes = null) {
+
+      routes.map(route =&gt; {
+
+        if(route.routes &amp;&amp; !route.path){
+          routerMatch(req, route.routes);
+
+        }else{
+          // use `matchPath` here
+          const match = matchPath(req.path, route);
+          debug("Match of "+req.path+":",match);
+
+          if (match &amp;&amp; components.length==0){
+            Object.assign(params, match.params);
+            components.push(route.component);
+          }
+        }
+      });
+    }
+
+    /**
+     * Render view with data
+     */
+    function renderView() {
+      // This context object contains the results of the render
+      const context = {};
+
+      const InitialView = (
+        &lt;Provider store={store}&gt;
+          &lt;StaticRouter location={req.url} context={context}&gt;
+              &lt;RoutesObj /&gt;
+          &lt;/StaticRouter&gt;
+        &lt;/Provider&gt;
+      );
+      
+      // context.url will contain the URL to redirect to if a &lt;Redirect&gt; was used
+      if (context.url) {
+        res.redirect(context.url);
+        return;
+      }
+
+      // Render ReactJS Components
+      const componentHTML = ReactDOMServer.renderToString(InitialView);      
+      
+      // Get initial state from store to append in the DOM
+      const initialState = store.getState();
+        
+      // Set the JS Template to return
+      const HTML = `
+      &lt;!DOCTYPE html&gt;
+        &lt;head&gt;
+          &lt;title&gt;This is a SSR post&lt;/title&gt;
+          &lt;script&gt;
+            window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          &lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;div id="site-canvas"&gt;&lt;div&gt;${componentHTML}&lt;/div&gt;&lt;/div&gt;
+        &lt;/body&gt;
+       &lt;/html&gt;`;
+
+       return HTML;
+    }
+
+    // Get any match from the router configuration (`routesServer`)
+    routerMatch(req, routesServer);
+  
+    // Fetch data from `needs` array
+    fetchComponentData(store.dispatch, components, params)
+      .then(renderView)
+      .then(html =&gt; res.end(html))
+      .catch(err =&gt; res.json({message:err.message}));
+  }
+});
+
+...
+</code></pre></div></div>
+
+			</article>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="post-cats">
+				Tags: coding, reactjs, ssr, devlog
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="share-title-section">
+				<span>Share on</span>
+			</div>
+			<ul class="share-page">			    
+			    <li>
+			    	<a href="https://facebook.com/sharer.php?u=https://luisfbmelo.github.io//blog/2017/12/15/react-16-server-side-rendering/" rel="nofollow" target="_blank" title="Server Side Rendering in ReactJS - from v15 to v16"><i class="fa fa-facebook"></i></a>
+	    		</li>
+			    <li>
+			    	<a href="https://twitter.com/intent/tweet?text=Server Side Rendering in ReactJS - from v15 to v16&url=https://luisfbmelo.github.io//blog/2017/12/15/react-16-server-side-rendering/" rel="nofollow" target="_blank" title="Server Side Rendering in ReactJS - from v15 to v16"><i class="fa fa-twitter"></i></a>
+		    	</li>
+			    <li>
+			    	<a href="https://plus.google.com/share?url=https://luisfbmelo.github.io//blog/2017/12/15/react-16-server-side-rendering/" rel="nofollow" target="_blank" title="Server Side Rendering in ReactJS - from v15 to v16"><i class="fa fa-google-plus"></i></a>
+		    	</li>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<div class="container disqus-container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">
+				    /* * * CONFIGURATION VARIABLES * * */
+				    var disqus_shortname = 'luisfbmelo';
+				    
+				    /* * * DON'T EDIT BELOW THIS LINE * * */
+				    (function() {
+				        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				    })();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+	</div>
+
+
+
+
+    <footer class="site-footer">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="social-icons-box">
+					<li><a href="https://github.com/luisfbmelo" target="_blank"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://www.facebook.com/luisfbmelo" target="_blank"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://www.behance.net/luisfbmelo" target="_blank"><i class="fa fa-behance"></i></a></li>
+					<li><a href="https://500px.com/luisfbmelo" target="_blank"><i class="socicon socicon-500px"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<p>
+					This website was developed using <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="http://browserify.org/" target="_blank">Browserify</a>.
+				</p>
+				<p>
+					The full source code can be found on <a href="https://github.com/luisfbmelo/portfolio_v2" target="_blank">Github</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="/js/bundle.min.js" async ></script>
+
+  </body>
+
+</html>

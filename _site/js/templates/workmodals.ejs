@@ -1,0 +1,59 @@
+<% for(var i=offset; (i<result.length && i<(offset+limit)); i++) { %>
+  <div class="portfolio-modal modal fade" id="proj-<%= result[i].permalink %>" tabindex="-1" role="dialog" aria-labelledby="<%= result[i].permalink %>">
+    <div class="modal-content <% if (result[i].classes.indexOf('photo')>=0) { %>photo-proj<% } %>">
+      <div class="fake-backgrop"></div>
+
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-lg-offset-1">
+
+            <!--BODY-->
+            <div class="modal-body">
+              <h1><%= result[i].title %></h1>
+              <p class="proj-intro-text">
+                <% for(var a=0; a<result[i].categories.length; a++) {%>
+                  <% if (a>0) { %>/<% } %><%= result[i].categories[a] %>
+                <% } %>
+              </p>
+
+              <!--CAROUSEL-->              
+
+              <div id="owl-<%= result[i].permalink %>" class="owl-carousel owl-theme portfolio-carousel">    
+                <% for(var a=0; a<result[i].images.length; a++) {%>
+                    <div class="item"><img src="/images/portfolio/<%= result[i].images[a].url %>" alt="<%= result[i].images[a].alt %>"></div>
+                <% } %>          
+              </div>
+
+
+              <!--FULL DESC-->
+              <div class="row complete-desc">
+                <% if (result[i].content) { %>
+                  <div class="<% if (result[i]['ext-url']) { %>col-md-9<% }else{ %>col-xs-12<% } %> proj-desc">
+                    <h2>
+                      Description
+                    </h2>
+                    <p>
+                      <%= result[i].content %>
+                    </p>
+                  </div>
+                  <% } %>
+
+                  <% if (result[i]['ext-url']) { %>
+                  <div class="<% if (result[i].content) { %>col-md-3<% }else{ %>col-xs-12 aCenter<% } %> proj-btns">
+                    <a href="http://<%= result[i]['ext-url'] %>" target="_blank" class="cta to-dark" rel="external">View project</a>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>

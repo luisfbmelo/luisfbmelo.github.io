@@ -1,0 +1,284 @@
+
+[
+    
+        {
+          "title"    : "Saudaçor S.A.",
+          "url"     : "/saudacor",
+          "date"     : "January 06, 2016",
+          "content"  : "<p>Saudaçor, S.A. website design and development using Wordpress. Saudaçor is an anonymous society corporation of strictly public funds, that provides services of general economic interest in the health field. \nThis project was development while working at Saudaçor.</p>\n\n<p><em>Tech: HTML5, CSS3 - SASS, Javascript, Wordpress (Theme from scratch)</em></p>\n",
+          "type"  : "main",
+          "permalink"  : "saudacor",
+          "ext-url"  : "www.saudacor.pt",
+          "images" : [{"url":"saudacor/1.jpg","alt":"Website on a Laptop"},{"url":"saudacor/2.jpg","alt":"Website on a Laptop"},{"url":"saudacor/3.jpg","alt":"Website on a Tablet"},{"url":"saudacor/4.jpg","alt":"Website on a Smartphone"},{"url":"saudacor/5.jpg","alt":"Website on a Smartphone"}],
+          "thumbnail" : [{"url":"saudacor/thumb/3.jpg","alt":"Saudaçor thumbnail"}],
+          "classes" : ["code","design"],
+          "categories" : ["Code","Design"]
+        } ,
+    
+        {
+          "title"    : "Artistas Lusos",
+          "url"     : "/artistaslusos",
+          "date"     : "September 25, 2015",
+          "content"  : "<p>Artistas Lusos consists in an online platform that provides a way to create a repository of Portuguese descendants artists from around the world, showing their work.</p>\n\n<p><em>Design: Rúben Ramos</em><br />\n<em>Tech: HTML5, CSS3 - SASS, AngularJS, PHP - REST API</em></p>\n",
+          "type"  : "main",
+          "permalink"  : "artistaslusos",
+          "ext-url"  : "www.artistaslusos.net",
+          "images" : [{"url":"artistaslusos/1.jpg","alt":"Website on a Laptop"},{"url":"artistaslusos/2.jpg","alt":"Website on a Tablet"},{"url":"artistaslusos/3.jpg","alt":"Website on a Smartphone"},{"url":"artistaslusos/4.jpg","alt":"Website on a Smartphone"}],
+          "thumbnail" : [{"url":"artistaslusos/thumb/1.jpg","alt":"Artistas Lusos thumbnail"}],
+          "classes" : ["code"],
+          "categories" : ["Code"]
+        } ,
+    
+        {
+          "title"    : "Prorural+",
+          "url"     : "/proruralmais",
+          "date"     : "July 12, 2015",
+          "content"  : "<p>A project developed during my internship at at <a href=\"http://cybermap.pt/\" title=\"Cybermap Homepage\" target=\"_blank\">Cybermap - Internet e Sistemas de Informação</a> , this project page provides specific information/documents and official press releases, news, alerts and other content for the Prorural+ program.</p>\n\n<p><em>Tech: DotNetNuke CMS</em></p>\n",
+          "type"  : "main",
+          "permalink"  : "proruralmais",
+          "ext-url"  : "proruralmais.azores.gov.pt",
+          "images" : [{"url":"proruralmais/1.jpg","alt":"Website on a Laptop"},{"url":"proruralmais/4.jpg","alt":"Website on a Tablet"},{"url":"proruralmais/5.jpg","alt":"Website on a Smartphone"}],
+          "thumbnail" : [{"url":"proruralmais/thumb/1.jpg","alt":"Proruralmais thumbnail"}],
+          "classes" : ["code","design"],
+          "categories" : ["Code","Design"]
+        } ,
+    
+        {
+          "title"    : "Mobile Natura",
+          "url"     : "/mobile-natura",
+          "date"     : "July 11, 2015",
+          "content"  : "<p>Mobile Natura is a creative, technological solution that assists visitors in being autonomous during their visits to parks, reserves and natural areas.</p>\n\n<p>The application was developed in the context of AzorIT Systems, a techonlogy firm pioneering innovative solutions for the public sector, education and culture, commerce and communication.</p>\n",
+          "type"  : null,
+          "permalink"  : "mobile-natura",
+          "ext-url"  : "www.behance.net/gallery/27464507/Mobile-Natura",
+          "images" : [{"url":"mobile-natura/1.jpg","alt":"Points of Interest"},{"url":"mobile-natura/2.jpg","alt":"Parks Assistance"},{"url":"mobile-natura/3.jpg","alt":"GeoBase Data"}],
+          "thumbnail" : [{"url":"mobile-natura/thumb/natura-logo.jpg","alt":"Mobile Natura thumbnail"}],
+          "classes" : ["code","design"],
+          "categories" : ["Code","Design"]
+        } ,
+    
+        {
+          "title"    : "PE - Projetos de Engenharia",
+          "url"     : "/pe-projetos-de-engenharia",
+          "date"     : "July 10, 2015",
+          "content"  : "<p>Founded in 2000, PE is a civil construction firm whose projects involve the coordination, supervision and auditing of construction projects.</p>\n\n<p><em>Tech: PHP (Yii Framework)</em></p>\n",
+          "type"  : "main",
+          "permalink"  : "pe-projetos-de-engenharia",
+          "ext-url"  : "www.costapoim.pt",
+          "images" : [{"url":"pe/1.jpg","alt":"Website on a laptop"},{"url":"pe/2.jpg","alt":"Website pages"},{"url":"pe/3.jpg","alt":"Website on a tablet"},{"url":"pe/4.jpg","alt":"Multiple screens"}],
+          "thumbnail" : [{"url":"pe/thumb/1.jpg","alt":"PE thumbnail"}],
+          "classes" : ["code","design"],
+          "categories" : ["Code","Design"]
+        } ,
+    
+        {
+          "title"    : "Toque Reservado - Repair Management Platform",
+          "url"     : "/toque-reservado-repair-management-platform",
+          "date"     : "July 10, 2015",
+          "content"  : "<p>This website has the intent to support the electronics store “Toque Reservado” in the repairs management with some fundamental features such as, repairs search engine, user management, statistics and invoice release. The core of this platform consists in the ability to create, edit, delete and deliver the repairs.</p>\n\n<p><em>Tech: PHP (Yii Framework)</em></p>\n",
+          "type"  : "main",
+          "permalink"  : "toque-reservado-repair-management-platform",
+          "ext-url"  : "luisfbmelo.com/toque",
+          "images" : [{"url":"toque/1.jpg","alt":"Platform"}],
+          "thumbnail" : [{"url":"toque/thumb/1.jpg","alt":"Toque Reservado thumbnail"}],
+          "classes" : ["code","design"],
+          "categories" : ["Code","Design"]
+        } ,
+    
+        {
+          "title"    : "Untitled",
+          "url"     : "/untitled",
+          "date"     : "July 09, 2015",
+          "content"  : "<p>“Untitled” is an arcade game where players buy every item and complete all challenges. To win the game, players have to even buy the victory.</p>\n\n<p><em>Tech: ActionScript</em></p>\n",
+          "type"  : null,
+          "permalink"  : "untitled",
+          "ext-url"  : "www.luisfbmelo.com/untitled",
+          "images" : [{"url":"untitled/1.jpg","alt":"Game Level 1"}],
+          "thumbnail" : [{"url":"untitled/thumb/1.jpg","alt":"Game Level 1"}],
+          "classes" : ["code"],
+          "categories" : ["Code"]
+        } ,
+    
+        {
+          "title"    : "Portrait Photography",
+          "url"     : "/portrait-photography",
+          "date"     : "July 08, 2015",
+          "content"  : "\n",
+          "type"  : "main",
+          "permalink"  : "portrait-photography",
+          "ext-url"  : null,
+          "images" : [{"url":"portrait/1.jpg","alt":"César e Mónica"},{"url":"portrait/2.jpg","alt":"César e Mónica"},{"url":"portrait/3.jpg","alt":"César e Mónica"},{"url":"portrait/4.jpg","alt":"César e Mónica"},{"url":"portrait/5.jpg","alt":"César e Mónica"},{"url":"portrait/6.jpg","alt":"César e Mónica"},{"url":"portrait/7.jpg","alt":"Primas"},{"url":"portrait/8.jpg","alt":"Primas"},{"url":"portrait/9.jpg","alt":"Primas"},{"url":"portrait/10.jpg","alt":"Matilde"},{"url":"portrait/11.jpg","alt":"Matilde"},{"url":"portrait/12.jpg","alt":"Matilde"},{"url":"portrait/13.jpg","alt":"Matilde"},{"url":"portrait/14.jpg","alt":"Matilde"},{"url":"portrait/15.jpg","alt":"Matilde"},{"url":"portrait/16.jpg","alt":"Matilde"}],
+          "thumbnail" : [{"url":"portrait/thumb/1.jpg","alt":"Portrait"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "Sismo d'Oitenta",
+          "url"     : "/sismo-doitenta",
+          "date"     : "July 08, 2015",
+          "content"  : "<p>A project developed by four friends, the “Sismo d’Oitenta” website was developed to archive the testimonies and stories of survivors who experienced the 1 January 1980 Azores earthquake that destoyed the historic centre of Angra do Heroísmo, and affected the islands of Terceira, São Jorge and Graciosa.</p>\n\n<p>The platform provides interesting techniques to promote understanding of the event, including photo comparisons, victim testimonies and eyewitness accounts.</p>\n\n<p><em>Tech: HTML, CSS, Javascript &amp; PHP</em></p>\n",
+          "type"  : null,
+          "permalink"  : "sismo-doitenta",
+          "ext-url"  : "www.sismodoitenta.com",
+          "images" : [{"url":"sismo/1.jpg","alt":"Screens"},{"url":"sismo/2.jpg","alt":"Web Design"},{"url":"sismo/3.jpg","alt":"Video"}],
+          "thumbnail" : [{"url":"sismo/thumb/1.jpg","alt":"Project thumbnail"}],
+          "classes" : ["code"],
+          "categories" : ["Code"]
+        } ,
+    
+        {
+          "title"    : "Baptism - Events",
+          "url"     : "/baptism-events",
+          "date"     : "July 08, 2015",
+          "content"  : "\n",
+          "type"  : "main",
+          "permalink"  : "baptism-events",
+          "ext-url"  : null,
+          "images" : [{"url":"baptism/1.jpg","alt":"Francisca"},{"url":"baptism/2.jpg","alt":"Francisca"},{"url":"baptism/3.jpg","alt":"Henrique"},{"url":"baptism/4.jpg","alt":"Henrique"},{"url":"baptism/5.jpg","alt":"Francisca"},{"url":"baptism/6.jpg","alt":"Henrique"}],
+          "thumbnail" : [{"url":"baptism/thumb/1.jpg","alt":"Baptism - Events"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "25th Silver Wedding Anniversary",
+          "url"     : "/25th-silver-wedding-anniversary",
+          "date"     : "July 07, 2015",
+          "content"  : "<p>The design of an invitation for the 25th Silver Wedding Anniversary of Teresa &amp; José.</p>\n",
+          "type"  : null,
+          "permalink"  : "25th-silver-wedding-anniversary",
+          "ext-url"  : "www.behance.net/gallery/19330847/Bodas-de-Prata-25th-Silver-Wedding-Anniversary",
+          "images" : [{"url":"bodas/1.jpg","alt":"Front"},{"url":"bodas/2.jpg","alt":"Inside"},{"url":"bodas/3.jpg","alt":"Front"}],
+          "thumbnail" : [{"url":"bodas/thumb/1.jpg","alt":"Invite thumbnail"}],
+          "classes" : ["design"],
+          "categories" : ["Design"]
+        } ,
+    
+        {
+          "title"    : "Folk Group \"Doce Esperança\"",
+          "url"     : "/folk-group-doce-esperança",
+          "date"     : "July 06, 2015",
+          "content"  : "<p>Photographic work for the CD release of the Folk Group “Doce Esperança” - Terceira Island, Azores.</p>\n\n<p><em>Photography work:</em> <strong>Luís Melo</strong></p>\n\n<p><em>Graphics, recording, mixing and mastering:</em> <strong>Emiliano Toste</strong></p>\n\n<p><em>Artistic Director:</em> <strong>Aida Barbosa</strong></p>\n",
+          "type"  : "main",
+          "permalink"  : "folk-group-doce-esperança",
+          "ext-url"  : "www.behance.net/gallery/19590197/Grupo-Folclorico-Doce-Esperanca",
+          "images" : [{"url":"folclore/1.jpg","alt":"CD Inside"},{"url":"folclore/2.jpg","alt":"CD Inside"},{"url":"folclore/3.jpg","alt":"CD Inside and Paper"},{"url":"folclore/4.jpg","alt":"CD Cover"},{"url":"folclore/5.jpg","alt":"Closed CD Box"}],
+          "thumbnail" : [{"url":"folclore/thumb/1.jpg","alt":"CD thumbnail"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "Whale Watching - Azores",
+          "url"     : "/whale-watching-azores",
+          "date"     : "July 05, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "whale-watching-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/whale.jpg","alt":"Whale Watching - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/whale.jpg","alt":"Whale Watching - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "Boca do inferno - Azores",
+          "url"     : "/boca-do-inferno",
+          "date"     : "July 04, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "boca-do-inferno",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/boca-do-inferno.jpg","alt":"Boca do inferno"}],
+          "thumbnail" : [{"url":"photo/thumb/boca-do-inferno.jpg","alt":"Boca do inferno"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "São Jorge Island - Azores",
+          "url"     : "/sao-jorge-island-azores",
+          "date"     : "July 03, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "sao-jorge-island-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/sao-jorge.jpg","alt":"São Jorge Island - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/sao-jorge.jpg","alt":"São Jorge Island - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "Sunset - Azores",
+          "url"     : "/sunset-azores",
+          "date"     : "July 02, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "sunset-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/sunset.jpg","alt":"Sunset - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/sunset.jpg","alt":"Sunset - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "Lagoa do Fogo - Azores",
+          "url"     : "/lagoa-do-fogo-azores",
+          "date"     : "July 01, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "lagoa-do-fogo-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/lagoa-do-fogo.jpg","alt":"Lagoa do Fogo - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/lagoa-do-fogo.jpg","alt":"Lagoa do Fogo - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "Terceira Island - Azores",
+          "url"     : "/terceira-island-azores",
+          "date"     : "June 30, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "terceira-island-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/terceira.jpg","alt":"Terceira Island - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/terceira.jpg","alt":"Terceira Island - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "São Miguel Island - Azores",
+          "url"     : "/sao-miguel-island-azores",
+          "date"     : "June 28, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "sao-miguel-island-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/sao-miguel.jpg","alt":"São Miguel Island - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/sao-miguel.jpg","alt":"São Miguel Island - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } ,
+    
+        {
+          "title"    : "My Paradise - Azores",
+          "url"     : "/my-paradise-azores",
+          "date"     : "June 27, 2015",
+          "content"  : "\n",
+          "type"  : null,
+          "permalink"  : "my-paradise-azores",
+          "ext-url"  : null,
+          "images" : [{"url":"photo/dolphins.jpg","alt":"My Paradise - Azores"}],
+          "thumbnail" : [{"url":"photo/thumb/dolphins.jpg","alt":"My Paradise - Azores"}],
+          "classes" : ["photo"],
+          "categories" : ["Photography"]
+        } 
+    
+] 

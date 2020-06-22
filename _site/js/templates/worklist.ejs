@@ -1,0 +1,15 @@
+<% for(var i=offset; (i<result.length && i<(offset+limit)); i++) { %>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 mix <% for(var a=0; a<result[a].classes.length; a++) {%><%= result[i].classes[a] %><% } %> proj-details-modal" data-toggle="modal" id="work-item-<%= result[i].permalink %>" data-target="#proj-<%= result[i].permalink %>">
+
+    <div class="work-item">
+      <div class="work-img">
+        <img src="/images/portfolio/<%= result[i].thumbnail[0].url  %>" alt="<%= result[i].thumbnail[0].alt %>" class="img-responsive full-width">
+      </div>
+      <div class="work-text">
+        <h3><%= result[i].title %></h3>
+        <footer><%= result[i].categories %></footer>
+      </div>
+    </div>
+  </div>
+<% } %>
