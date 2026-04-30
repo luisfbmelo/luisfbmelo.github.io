@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Orçamento Fotográfico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface2: #222;
+    --border: #2e2e2e;
+    --border2: #383838;
+    --text: #e8e8e8;
+    --text2: #888;
+    --text3: #555;
+    --accent: #c8f060;
+    --accent-dim: rgba(200,240,96,0.12);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; }
+
+  header { margin-bottom: 2.5rem; }
+  header h1 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); }
+  header p { font-size: 13px; color: var(--text3); margin-top: 4px; }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  label { font-size: 12px; color: var(--text2); }
+  .unit { font-size: 11px; color: var(--text3); }
+
+  input[type=number], input[type=text], select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-family: var(--font);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: var(--surface2);
+    color: var(--text);
+    transition: border-color 0.15s;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  select option { background: var(--surface2); }
+
+  .divider { height: 1px; background: var(--border); margin: 1rem 0; }
+  .hint { font-size: 11px; color: var(--text3); margin-top: 5px; line-height: 1.5; }
+
+  /* Event types */
+  .col-labels { display: grid; grid-template-columns: 1fr 130px 36px; gap: 8px; margin-bottom: 6px; }
+  .col-label { font-size: 11px; color: var(--text3); }
+  .event-types { display: flex; flex-direction: column; gap: 8px; }
+  .event-row { display: grid; grid-template-columns: 1fr 130px 36px; gap: 8px; align-items: center; }
+
+  .btn-remove {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text3);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .btn-remove:hover { border-color: #c84040; color: #c84040; }
+
+  .btn-add {
+    margin-top: 10px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-family: var(--font);
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text3);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-add:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Project select */
+  .event-select-row { display: flex; align-items: center; gap: 10px; }
+  .event-select-row select { flex: 1; }
+  .margem-badge {
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+    white-space: nowrap;
+    background: var(--accent-dim);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .fixos-preview {
+    font-size: 12px;
+    color: var(--text2);
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: 1px solid var(--border);
+  }
+  .fixos-preview span { font-family: var(--mono); color: var(--text); }
+
+  /* Results */
+  .results {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .results::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .result-title { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+
+  .result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+
+  .metric {
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+  }
+  .metric-label { font-size: 11px; color: var(--text3); margin-bottom: 8px; }
+  .metric-value { font-size: 18px; font-weight: 400; font-family: var(--mono); color: var(--text); }
+
+  .breakdown { border-top: 1px solid var(--border); padding-top: 1rem; }
+  .breakdown-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+  .breakdown-row .label { font-size: 13px; color: var(--text2); }
+  .breakdown-row .value { font-size: 14px; font-family: var(--mono); color: var(--text); }
+  .breakdown-row.total { border-top: 1px solid var(--border2); margin-top: 8px; padding-top: 12px; }
+  .breakdown-row.total .label { font-size: 15px; color: var(--text); font-weight: 500; }
+  .breakdown-row.total .value { font-size: 22px; color: var(--accent); font-family: var(--mono); }
+
+  .tip {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: var(--mono);
+    margin-top: 0.75rem;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Calculadora de orçamento fotográfico</h1>
+    <p>Preenche os campos para calcular o preço a cobrar por evento.</p>
+  </header>
+
+  <div class="section">
+    <h3>Custos fixos mensais</h3>
+    <div class="grid3">
+      <div class="field">
+        <label>Equipamento / amortização <span class="unit">(€/mês)</span></label>
+        <input type="number" id="c_equip" value="150" min="0">
+      </div>
+      <div class="field">
+        <label>Software <span class="unit">(€/mês)</span></label>
+        <input type="number" id="c_sw" value="50" min="0">
+      </div>
+      <div class="field">
+        <label>Seguro / outros <span class="unit">(€/mês)</span></label>
+        <input type="number" id="c_outros" value="0" min="0">
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="field">
+      <label>Percentagem de custos fixos a imputar por evento <span class="unit">(%)</span></label>
+      <input type="number" id="pct_fixos" value="25" min="0" max="100" step="1" style="max-width:160px">
+      <p class="hint">Ex: se tens em média 4 eventos por mês, define 25%. Com 2 eventos, 50%.</p>
+    </div>
+    <div class="fixos-preview" id="fixos_preview"></div>
+  </div>
+
+  <div class="section">
+    <h3>Tarifas de mão de obra</h3>
+    <div class="grid2">
+      <div class="field">
+        <label>Valor/hora — evento <span class="unit">(€/h)</span></label>
+        <input type="number" id="vh_evento" value="25" min="0">
+      </div>
+      <div class="field">
+        <label>Valor/hora — edição <span class="unit">(€/h)</span></label>
+        <input type="number" id="vh_edicao" value="25" min="0">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Tipos de evento e margens de lucro</h3>
+    <div class="col-labels">
+      <div class="col-label">Tipo de evento</div>
+      <div class="col-label">Margem (%)</div>
+      <div class="col-label"></div>
+    </div>
+    <div class="event-types" id="event-types"></div>
+    <button class="btn-add" id="btn-add">+ Adicionar tipo</button>
+  </div>
+
+  <div class="section">
+    <h3>Detalhes do projeto</h3>
+    <div class="field" style="margin-bottom:12px">
+      <label>Tipo de evento</label>
+      <div class="event-select-row">
+        <select id="sel_event"></select>
+        <span class="margem-badge" id="margem_info"></span>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="field">
+        <label>Horas no evento</label>
+        <input type="number" id="h_evento" value="4" min="0" step="0.5">
+      </div>
+      <div class="field">
+        <label>Horas de edição</label>
+        <input type="number" id="h_edicao" value="6" min="0" step="0.5">
+      </div>
+      <div class="field">
+        <label>Km de deslocação <span class="unit">(ida+volta)</span></label>
+        <input type="number" id="km" value="20" min="0">
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="grid2">
+      <div class="field">
+        <label>€ por km</label>
+        <input type="number" id="eur_km" value="0.13" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label>Materiais / consumíveis <span class="unit">(€)</span></label>
+        <input type="number" id="materiais" value="0" min="0">
+      </div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="result-title">Resultado</div>
+    <div class="result-grid">
+      <div class="metric">
+        <div class="metric-label">Mão de obra</div>
+        <div class="metric-value" id="r_mdo">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Deslocação</div>
+        <div class="metric-value" id="r_desl">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Custos fixos imputados</div>
+        <div class="metric-value" id="r_fixos">—</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Margem de lucro</div>
+        <div class="metric-value" id="r_margem">—</div>
+      </div>
+    </div>
+    <div class="breakdown">
+      <div class="breakdown-row">
+        <span class="label">Custo total (sem margem)</span>
+        <span class="value" id="r_custo_total">—</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="label">Margem de lucro</span>
+        <span class="value" id="r_lucro">—</span>
+      </div>
+      <div class="breakdown-row total">
+        <span class="label">Preço final a cobrar</span>
+        <span class="value" id="r_preco_final">—</span>
+      </div>
+    </div>
+    <p class="tip" id="tip_hora"></p>
+  </div>
+</div>
+
+<script>
+let eventTypes = [
+  { name: 'Casamento', margem: 40 },
+  { name: 'Batizado', margem: 30 },
+  { name: 'Aniversário', margem: 25 },
+  { name: 'Corporativo', margem: 35 },
+  { name: 'Sessão de retratos', margem: 20 },
+];
+
+function fmt(v) {
+  return v.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function renderEventTypes() {
+  const container = document.getElementById('event-types');
+  container.innerHTML = '';
+  eventTypes.forEach((et, i) => {
+    const row = document.createElement('div');
+    row.className = 'event-row';
+    row.innerHTML = `
+      <input type="text" value="${et.name}" placeholder="Nome do tipo" data-i="${i}" data-field="name">
+      <input type="number" value="${et.margem}" min="0" max="500" step="1" data-i="${i}" data-field="margem">
+      <button class="btn-remove" data-i="${i}" title="Remover">×</button>
+    `;
+    container.appendChild(row);
+  });
+  container.querySelectorAll('input[data-field=name]').forEach(el => {
+    el.addEventListener('input', e => { eventTypes[e.target.dataset.i].name = e.target.value; refreshSelect(); calc(); });
+  });
+  container.querySelectorAll('input[data-field=margem]').forEach(el => {
+    el.addEventListener('input', e => { eventTypes[e.target.dataset.i].margem = parseFloat(e.target.value) || 0; refreshSelect(); calc(); });
+  });
+  container.querySelectorAll('.btn-remove').forEach(el => {
+    el.addEventListener('click', e => {
+      const i = parseInt(e.target.dataset.i);
+      if (eventTypes.length <= 1) return;
+      eventTypes.splice(i, 1);
+      renderEventTypes(); refreshSelect(); calc();
+    });
+  });
+}
+
+function refreshSelect() {
+  const sel = document.getElementById('sel_event');
+  const prev = sel.value;
+  sel.innerHTML = '';
+  eventTypes.forEach((et, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = et.name;
+    sel.appendChild(opt);
+  });
+  const prevIdx = parseInt(prev);
+  if (!isNaN(prevIdx) && prevIdx < eventTypes.length) sel.value = prevIdx;
+  updateMargemBadge();
+}
+
+function updateMargemBadge() {
+  const i = parseInt(document.getElementById('sel_event').value) || 0;
+  const et = eventTypes[i];
+  if (et) document.getElementById('margem_info').textContent = et.margem + '% margem';
+}
+
+function calc() {
+  const c_equip = parseFloat(document.getElementById('c_equip').value) || 0;
+  const c_sw = parseFloat(document.getElementById('c_sw').value) || 0;
+  const c_outros = parseFloat(document.getElementById('c_outros').value) || 0;
+  const pct_fixos = parseFloat(document.getElementById('pct_fixos').value) || 0;
+  const vh_evento = parseFloat(document.getElementById('vh_evento').value) || 0;
+  const vh_edicao = parseFloat(document.getElementById('vh_edicao').value) || 0;
+  const h_evento = parseFloat(document.getElementById('h_evento').value) || 0;
+  const h_edicao = parseFloat(document.getElementById('h_edicao').value) || 0;
+  const km = parseFloat(document.getElementById('km').value) || 0;
+  const eur_km = parseFloat(document.getElementById('eur_km').value) || 0;
+  const materiais = parseFloat(document.getElementById('materiais').value) || 0;
+
+  const i = parseInt(document.getElementById('sel_event').value) || 0;
+  const margem_pct = eventTypes[i] ? eventTypes[i].margem : 0;
+  document.getElementById('margem_info').textContent = margem_pct + '% margem';
+
+  const custos_fixos_mes = c_equip + c_sw + c_outros;
+  const fixos_imputados = custos_fixos_mes * (pct_fixos / 100);
+
+  document.getElementById('fixos_preview').innerHTML =
+    'Total de custos fixos: <span>' + fmt(custos_fixos_mes) + '/mês</span> — imputado a este evento: <span>' + fmt(fixos_imputados) + '</span>';
+
+  const mao_de_obra = h_evento * vh_evento + h_edicao * vh_edicao;
+  const deslocacao = km * eur_km;
+  const custo_total = mao_de_obra + deslocacao + fixos_imputados + materiais;
+  const lucro = custo_total * (margem_pct / 100);
+  const preco_final = custo_total + lucro;
+
+  document.getElementById('r_mdo').textContent = fmt(mao_de_obra);
+  document.getElementById('r_desl').textContent = fmt(deslocacao);
+  document.getElementById('r_fixos').textContent = fmt(fixos_imputados);
+  document.getElementById('r_margem').textContent = fmt(lucro);
+  document.getElementById('r_custo_total').textContent = fmt(custo_total);
+  document.getElementById('r_lucro').textContent = '+' + fmt(lucro);
+  document.getElementById('r_preco_final').textContent = fmt(preco_final);
+
+  const h_total = h_evento + h_edicao;
+  document.getElementById('tip_hora').textContent = h_total > 0
+    ? 'valor efectivo por hora: ' + fmt(preco_final / h_total) + '/h'
+    : '';
+}
+
+document.getElementById('btn-add').addEventListener('click', () => {
+  eventTypes.push({ name: 'Novo tipo', margem: 25 });
+  renderEventTypes(); refreshSelect(); calc();
+});
+document.getElementById('sel_event').addEventListener('change', () => { updateMargemBadge(); calc(); });
+document.querySelectorAll('#c_equip,#c_sw,#c_outros,#pct_fixos,#vh_evento,#vh_edicao,#h_evento,#h_edicao,#km,#eur_km,#materiais').forEach(el => el.addEventListener('input', calc));
+
+renderEventTypes(); refreshSelect(); calc();
+</script>
+</body>
+</html>
